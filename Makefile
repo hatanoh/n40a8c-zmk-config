@@ -3,7 +3,7 @@ container_name ?= please set container name
 
 BOARD ?= seeeduino_xiao_ble
 SHIELD ?= n40a8c
-FIRM = $(SHIELD)_$(BOARD)_zmk.uf2
+FIRM = $(SHIELD)-$(BOARD)-zmk.uf2
 ZMK_DIR = $(PWD)/../zmk
 CONFIG_DIR = $(PWD)
 BUILD_DIR = build_$(SHIELD)_$(BOARD)
