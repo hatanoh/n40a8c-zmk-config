@@ -6,5 +6,5 @@
 *.tmp
 
 #
-container.mk
+settings.mk
 *.uf2
