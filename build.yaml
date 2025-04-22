@@ -18,3 +18,9 @@
 #     artifact-name: corne_left_with_studio
 #
 ---
+include:
+  - board: seeeduino_xiao_ble 
+    shield: n40a8c
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artificial-name: n40a8c

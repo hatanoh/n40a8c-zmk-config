@@ -1,0 +1,53 @@
+
+#include <physical_layouts.dtsi>
+/ {
+    physical_layout0: physical_layout0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Layout";
+        keys
+            = <&key_physical_attrs 150 100 (-25) 0 0 0 0>
+			,<&key_physical_attrs 100 100 125 0 0 0 0>
+			,<&key_physical_attrs 100 100 244 0 800 244 0>
+			,<&key_physical_attrs 100 100 343 14 800 343 14>
+			,<&key_physical_attrs 100 100 442 28 800 442 28>
+			,<&key_physical_attrs 100 100 541 42 800 541 42>
+			,<&key_physical_attrs 100 100 641 62 (-800) 641 62>
+			,<&key_physical_attrs 100 100 740 48 (-800) 740 48>
+			,<&key_physical_attrs 100 100 839 34 (-800) 839 34>
+			,<&key_physical_attrs 100 100 938 20 (-800) 938 20>
+			,<&key_physical_attrs 100 100 1056 0 0 0 0>
+			,<&key_physical_attrs 150 100 1156 0 0 0 0>
+			,<&key_physical_attrs 175 100 (-37) 103 0 0 0>
+			,<&key_physical_attrs 100 100 138 103 0 0 0>
+			,<&key_physical_attrs 100 100 255 103 800 255 103>
+			,<&key_physical_attrs 100 100 354 116 800 354 116>
+			,<&key_physical_attrs 100 100 453 130 800 453 130>
+			,<&key_physical_attrs 100 100 552 144 800 552 144>
+			,<&key_physical_attrs 100 100 680 157 (-800) 680 157>
+			,<&key_physical_attrs 100 100 779 144 (-800) 779 144>
+			,<&key_physical_attrs 100 100 878 130 (-800) 878 130>
+			,<&key_physical_attrs 100 100 977 116 (-800) 977 116>
+			,<&key_physical_attrs 225 100 1094 103 0 0 0>
+			,<&key_physical_attrs 225 100 (-50) 206 0 0 0>
+			,<&key_physical_attrs 100 100 175 206 0 0 0>
+			,<&key_physical_attrs 100 100 290 208 800 290 208>
+			,<&key_physical_attrs 100 100 389 222 800 389 222>
+			,<&key_physical_attrs 100 100 488 236 800 488 236>
+			,<&key_physical_attrs 100 100 587 250 800 587 250>
+			,<&key_physical_attrs 100 100 743 250 (-800) 743 250>
+			,<&key_physical_attrs 100 100 843 236 (-800) 843 236>
+			,<&key_physical_attrs 100 100 942 222 (-800) 942 222>
+			,<&key_physical_attrs 100 100 1056 206 0 0 0>
+			,<&key_physical_attrs 175 100 1156 206 0 0 0>
+			,<&key_physical_attrs 125 100 (-37) 306 0 0 0>
+			,<&key_physical_attrs 125 100 88 306 0 0 0>
+			,<&key_physical_attrs 125 100 351 318 800 351 318>
+			,<&key_physical_attrs 200 100 474 335 800 474 335>
+			,<&key_physical_attrs 225 100 683 359 (-800) 683 359>
+			,<&key_physical_attrs 125 100 906 328 (-800) 906 328>
+			,<&key_physical_attrs 125 100 1069 306 0 0 0>
+			,<&key_physical_attrs 125 100 1194 306 0 0 0>
+            ;
+    };
+};
+    

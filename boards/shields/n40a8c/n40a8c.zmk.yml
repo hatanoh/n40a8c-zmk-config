@@ -1,0 +1,10 @@
+file_format: "1"
+id: n40a8c
+name: n40a8c
+type: shield
+features:
+  - keys
+  - studio
+outputs:
+  - usb
+  - ble

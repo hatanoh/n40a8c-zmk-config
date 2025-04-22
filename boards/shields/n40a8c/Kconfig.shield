@@ -1,0 +1,3 @@
+
+config SHIELD_N40A8C
+    def_bool $(shields_list_contains,n40a8c)

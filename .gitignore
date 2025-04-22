@@ -1,0 +1,10 @@
+# Temporary files
+*.000
+*.bak
+*.bck
+*~
+*.tmp
+
+#
+container.mk
+

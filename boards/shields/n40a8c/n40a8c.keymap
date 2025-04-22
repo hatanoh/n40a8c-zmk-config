@@ -1,0 +1,41 @@
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+	    display-name = "base";
+            bindings =<
+                &kp ESC       &kp Q    &kp W &kp E &kp R     &kp T        &kp Y       &kp U    &kp I &kp O     &kp P    &kp BSPC
+		&mt LCTRL TAB &kp A    &kp S &kp D &kp F     &kp G        &kp H       &kp J    &kp K &kp L              &kp RET
+		&kp LSHIFT    &kp Z    &kp X &kp C &kp V     &kp B                    &kp N    &kp M &kp COMMA &kp DOT  &kp RSHIFT
+		&kp LGUI      &kp CAPS             &kp LALT  &lt 2 SPACE  &lt 1 SPACE &kp RALT                 &kp RGUI &kp K_APP
+            >;
+        };
+        num_layer {
+	    display-name = "num";
+            bindings =<
+                &kp GRAVE &kp N1    &kp N2  &kp N3   &kp N4        &kp N5    &kp N6   &kp N7   &kp N8   &kp N9  &kp N0 &kp DEL
+		&trans    &none     &none   &kp BSLH &kp LBRC      &kp MINUS &kp PLUS &kp RBRC &kp SEMI &kp SQT        &trans
+		&trans    &kp COMMA &kp DOT &kp FSLH &kp LA(GRAVE) &none              &none    &none    &none   &none  &trans
+		&trans    &trans                     &trans        &trans    &trans   &trans                    &trans &trans
+            >;
+        };
+        func_layer {
+	    display-name = "func";
+            bindings =<
+                &kp GRAVE &kp F1    &kp F2  &kp F3   &kp F4   &kp F5  &kp F6   &kp F7   &kp F8   &kp F9    &kp F10 &kp INS
+		&trans    &kp F11   &kp F12 &none    &none    &none   &kp LEFT &kp DOWN &kp UP   &kp RIGHT         &trans
+		&trans    &kp COMMA &kp DOT &kp FSLH &none    &none            &none    &none    &none     &none   &trans
+		&trans    &trans                     &trans   &trans  &trans   &trans                      &trans  &trans
+            >;
+        };
+	meta_layer {
+	    display-name = "meta";
+	    status = "reserved";
+	};
+    };
+};
