@@ -15,8 +15,8 @@ TARGET = $(ZMK_DIR)/app/$(BUILD_DIR)/zephyr/zmk.uf2
 build: $(TARGET)
 
 $(TARGET):
-	docker exec -w /workspaces/zmk/app -it $(container_name) west build -d $(BUILD_DIR) -b $(BOARD) -S studio-rpc-usb-uart -- -DSHIELD=$(SHIELD) -DCONFIG_ZMK_STUDIO=y -DZMK_CONFIG="/workspaces/zmk-config" 
-	docker exec -w /workspaces/zmk/app -it $(container_name) cp $(BUILD_DIR)/zephyr/zmk.uf2 /workspaces/$(FIRM_DIR)/$(FIRM)
+	devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "(cd app ; west build -d $(BUILD_DIR) -b $(BOARD) -S studio-rpc-usb-uart -- -DSHIELD=$(SHIELD) -DCONFIG_ZMK_STUDIO=y -DZMK_CONFIG="/workspaces/zmk-config")"
+	devcontainer exec --workspace-folder $(ZMK_DIR) cp app/$(BUILD_DIR)/zephyr/zmk.uf2 /workspaces/$(FIRM_DIR)/$(FIRM)
 
 restart:
 	docker stop $(container_name)
@@ -24,7 +24,7 @@ restart:
 	devcontainer up --workspace-folder $(ZMK_DIR)
 
 shell:
-	docker exec -w /workspaces/zmk -it $(container_name) /bin/bash
+	devcontainer exec --workspace-folder $(ZMK_DIR) bash
 
 clean:
-	docker exec -it $(container_name) rm -rf /workspaces/zmk/app/$(BUILD_DIR)
+	devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf /workspaces/zmk/app/$(BUILD_DIR)
