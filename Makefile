@@ -4,7 +4,7 @@ SHIELD ?= n40a8c
 ZMK_DIR = $(PWD)/../zmk
 CONFIG_DIR = $(PWD)
 MODULES_DIR = $(PWD)/modules
-BUILD_DIR = build_$(SHIELD)_$(BOARD)
+BUILD_DIR = build/$(SHIELD)_$(BOARD)
 FIRM_DIR = zmk-config/firmware
 FIRM = $(SHIELD)-$(BOARD)-zmk.uf2
 
@@ -40,7 +40,7 @@ setup:
 	devcontainer exec --workspace-folder $(ZMK_DIR) west update
 
 remove:
-	-devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "rm -rf app/build_*_*"
+	-devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "rm -rf app/build"
 	-devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf .west
 	-docker stop `docker ps | grep vsc-zmk | cut -f 1 -d " "`
 	-docker container rm `docker container ls | grep vsc-zmk | cut -f 1 -d " "`
