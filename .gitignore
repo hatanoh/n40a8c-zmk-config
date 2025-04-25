@@ -6,5 +6,4 @@
 *.tmp
 
 #
-settings.mk
 *.uf2

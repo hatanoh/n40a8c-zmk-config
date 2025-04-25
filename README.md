@@ -1,24 +1,33 @@
 # ローカルビルド
-## docker / devcontainer 環境を構築する
+## 環境を構築する
 
-1. zmkをクローンした箇所に本レポジトリをクローンする
-   
+1. docker と devcontainer をインストールする
+  https://docs.docker.com/engine/install/ や https://code.visualstudio.com/docs/devcontainers/devcontainer-cli を参照してインストールする
+
+2. コンテナを構築する
+
 ```
-$ ls -F
-zmk
-$ git clone https://github.com/hatanoh/n40a8c-zmk-config.git
+$ make setup
 ```
 
-2. https://zmk.dev/docs/development/local-toolchain/setup/container?container=cli に従って環境を構築する。
-   
-   zmk-modulesは空のディレクトリを用意する。zmk-configは本レポジトリにシンボリックリンクを張る。
+  zmk-configは本レポジトリのディレクトリ、zmk-modulesは本レポジトリの下のmodulesがマウントされる。
 
-## zmk-configの設定
+  zmkは一つ上のディレクトリにcloneされる
+
+```
++- zmk
++- n40a8c-zmk-config (zmk-config)
+  +- boards
+    +- shield
+      +- n40a8c
+  +- config
+  +- firmware
+  +- modules (zmk-modules)
+  +- zephyr
+```
 
 ## ファームウェアのビルド
-1. zmk-configディレクトリに移動する。
-
-2. make する
+1. make する
    
 ```
 $ make clean build
@@ -29,10 +38,16 @@ $ make clean build
 $ make clean build BOARD=seeeduino_xiao_rp2040
 ```
 
-3. firmwareの確認
+2. firmwareの確認
 
    ビルドしたfirmwareはfirmwareディレクトリにコピーされる
 ```
 $ ls firmware/
 n40a8c-seeeduino_xiao_ble-zmk.uf2  n40a8c-seeeduino_xiao_rp2040-zmk.uf2
 ```
+
+## コンテナの削除
+```
+$ make remove
+```
+zmk環境以外には影響しないと思われるが実行する場合は必ずMakefileを確認してから実施すること。

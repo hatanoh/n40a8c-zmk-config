@@ -22,3 +22,31 @@ shell:
 clean:
 	devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf /workspaces/zmk/app/$(BUILD_DIR)
 	rm -f $(TARGET)
+
+start:
+	devcontainer up --workspace-folder $(ZMK_DIR) 
+
+stop:
+	docker stop `docker ps | grep vsc-zmk | cut -f 1 -d " "`
+
+setup:
+	-(cd ..; git clone https://github.com/zmkfirmware/zmk.git )
+	docker volume create --driver local -o o=bind -o type=none -o device="$(PWD)" zmk-config
+	docker volume create --driver local -o o=bind -o type=none -o device="$(PWD)/modules" zmk-modules
+	devcontainer up --workspace-folder $(ZMK_DIR)
+	devcontainer exec --workspace-folder $(ZMK_DIR) west init -l app/
+	devcontainer exec --workspace-folder $(ZMK_DIR) west update
+
+remove:
+	-devcontainer up --workspace-folder $(ZMK_DIR)
+	-devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf app/build-*
+	-devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf .west
+	-docker stop `docker ps | grep vsc-zmk | cut -f 1 -d " "`
+	-docker container rm `docker container ls | grep vsc-zmk | cut -f 1 -d " "`
+	-docker image rm `docker image ls | grep vsc-zmk | awk '{print $$3}'`
+	-docker volume rm `docker volume ls -q | grep zmk-`
+
+distclean: remove 
+	rm -rf ../zmk
+	rm -f firmware/*.uf2
+	docker system prune -f
