@@ -3,21 +3,20 @@ SHIELD ?= n40a8c
 
 ZMK_DIR = $(PWD)/../zmk
 CONFIG_DIR = $(PWD)
+MODULES_DIR = $(PWD)/modules
 BUILD_DIR = build_$(SHIELD)_$(BOARD)
 FIRM_DIR = zmk-config/firmware
 FIRM = $(SHIELD)-$(BOARD)-zmk.uf2
 
 TARGET = $(CONFIG_DIR)/firmware/$(FIRM)
+SRCS = $(shell find ./boards/shields/$(SHIELD) ./config -type f)
 
 .PHONY: build clean
 
 build: $(TARGET)
 
-$(TARGET):
+$(TARGET): $(SRC)
 	devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "(cd app ; west build -d $(BUILD_DIR) -b $(BOARD) -S studio-rpc-usb-uart -- -DSHIELD=$(SHIELD) -DCONFIG_ZMK_STUDIO=y -DZMK_CONFIG="/workspaces/zmk-config" && cp $(BUILD_DIR)/zephyr/zmk.uf2 /workspaces/$(FIRM_DIR)/$(FIRM))"
-
-shell:
-	devcontainer exec --workspace-folder $(ZMK_DIR) bash
 
 clean:
 	devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf /workspaces/zmk/app/$(BUILD_DIR)
@@ -29,16 +28,19 @@ start:
 stop:
 	docker stop `docker ps | grep vsc-zmk | cut -f 1 -d " "`
 
+shell:
+	devcontainer exec --workspace-folder $(ZMK_DIR) bash
+
 setup:
 	-(cd ..; git clone https://github.com/zmkfirmware/zmk.git )
-	docker volume create --driver local -o o=bind -o type=none -o device="$(PWD)" zmk-config
-	docker volume create --driver local -o o=bind -o type=none -o device="$(PWD)/modules" zmk-modules
+	docker volume create --driver local -o o=bind -o type=none -o device="$(CONFIG_DIR)" zmk-config
+	docker volume create --driver local -o o=bind -o type=none -o device="$(MODULES_DIR)" zmk-modules
 	devcontainer up --workspace-folder $(ZMK_DIR)
 	devcontainer exec --workspace-folder $(ZMK_DIR) west init -l app/
 	devcontainer exec --workspace-folder $(ZMK_DIR) west update
 
 remove:
-	-devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "rm -rf app/build_*"
+	-devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "rm -rf app/build_*_*"
 	-devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf .west
 	-docker stop `docker ps | grep vsc-zmk | cut -f 1 -d " "`
 	-docker container rm `docker container ls | grep vsc-zmk | cut -f 1 -d " "`
