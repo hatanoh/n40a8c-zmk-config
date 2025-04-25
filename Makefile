@@ -38,7 +38,6 @@ setup:
 	devcontainer exec --workspace-folder $(ZMK_DIR) west update
 
 remove:
-	devcontainer up --workspace-folder $(ZMK_DIR) 
 	-devcontainer exec --workspace-folder $(ZMK_DIR) bash -c "rm -rf app/build_*"
 	-devcontainer exec --workspace-folder $(ZMK_DIR) rm -rf .west
 	-docker stop `docker ps | grep vsc-zmk | cut -f 1 -d " "`
