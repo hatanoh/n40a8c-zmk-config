@@ -2,17 +2,18 @@
 ## 環境を構築する
 
 1. docker と devcontainer をインストールする
-  https://docs.docker.com/engine/install/ や https://code.visualstudio.com/docs/devcontainers/devcontainer-cli を参照してインストールする
+   
+   https://docs.docker.com/engine/install/ や https://code.visualstudio.com/docs/devcontainers/devcontainer-cli を参照してインストールする
 
-2. コンテナを構築する
+3. コンテナを構築する
 
 ```
 $ make setup
 ```
 
-  zmk-configは本レポジトリのディレクトリ、zmk-modulesは本レポジトリの下のmodulesがマウントされる。
+   zmk-configは本レポジトリのディレクトリ、zmk-modulesは本レポジトリの下のmodulesがマウントされる。
 
-  zmkは一つ上のディレクトリにcloneされる
+   zmkは一つ上のディレクトリにcloneされる
 
 ```
 +- zmk
@@ -27,13 +28,12 @@ $ make setup
 ```
 
 ## ファームウェアのビルド
-1. make する
-   
+1. makeする
 ```
 $ make clean build
 ```
   
-  XIAO RP2040用をビルドしたい場合は以下の通り
+   XIAO RP2040用をビルドしたい場合は以下の通り
 ```
 $ make clean build BOARD=seeeduino_xiao_rp2040
 ```
