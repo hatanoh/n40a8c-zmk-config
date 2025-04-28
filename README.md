@@ -30,12 +30,7 @@ $ make setup
 ## ファームウェアのビルド
 1. makeする
 ```
-$ make clean build
-```
-  
-   XIAO RP2040用をビルドしたい場合は以下の通り
-```
-$ make clean build BOARD=seeeduino_xiao_rp2040
+$ make cleanall buildall
 ```
 
 2. firmwareの確認
