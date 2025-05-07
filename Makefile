@@ -54,6 +54,6 @@ remove:
 	-docker volume rm `docker volume ls -q | grep zmk-`
 
 distclean: remove 
-	rm -rf ../zmk
-	rm -f firmware/*.uf2
-	docker system prune -f
+	-rm -rf ../zmk
+	-rm -f firmware/*.uf2
+	-docker system prune -f

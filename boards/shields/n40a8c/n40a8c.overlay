@@ -3,6 +3,23 @@
 #include "layouts.dtsi"
 
 / {
+    behaviors {
+        hw_soft_off: hw_soft_off {
+            compatible = "zmk,behavior-soft-off";
+            #binding-cells = <0>;
+            split-peripheral-off-on-press; // Turn peripheral off immediately for reliability
+            hold-time-ms = <2000>; // Only turn off if the key is held for 2 seconds or longer.
+        };
+    };
+    keys {
+        compatible = "gpio-keys";
+        soft_off_gpio_key: soft_off_gpio_key {
+            gpios = <&xiao_d 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP) >;
+        };
+    };
+};
+
+/ {
     chosen {
         zmk,physical-layout = &physical_layout0;
     };
@@ -25,9 +42,9 @@
 
         interrupt-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN) >;
         gpios
-          = <&xiao_d 10 GPIO_ACTIVE_HIGH>
-          , <&xiao_d 9 GPIO_ACTIVE_HIGH>
+          = <&xiao_d 9 GPIO_ACTIVE_HIGH>
           , <&xiao_d 8 GPIO_ACTIVE_HIGH>
+          , <&xiao_d 7 GPIO_ACTIVE_HIGH>
           , <&xiao_d 5 GPIO_ACTIVE_HIGH>
           , <&xiao_d 4 GPIO_ACTIVE_HIGH>
           , <&xiao_d 3 GPIO_ACTIVE_HIGH>
