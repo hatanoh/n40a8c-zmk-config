@@ -1,6 +1,6 @@
 BOARDS = seeeduino_xiao_ble seeeduino_xiao_rp2040
 BOARD ?= seeeduino_xiao_ble
-SHIELD ?= n40a8c
+SHIELD ?= n42a7c
 
 ZMK_DIR = $(PWD)/../zmk
 CONFIG_DIR = $(PWD)
