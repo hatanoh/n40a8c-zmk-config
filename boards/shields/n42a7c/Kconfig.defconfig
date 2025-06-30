@@ -1,6 +1,6 @@
 
 if SHIELD_N40A8C
 config ZMK_KEYBOARD_NAME
-    default "n40a8c"
+    default "n42a7c"
 
 endif
