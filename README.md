@@ -17,10 +17,10 @@ $ make setup
 
 ```
 +- zmk
-+- n40a8c-zmk-config (zmk-config)
++- n42a7c-zmk-config (zmk-config)
   +- boards
     +- shield
-      +- n40a8c
+      +- n42a7c
   +- config
   +- firmware
   +- modules (zmk-modules)
@@ -38,7 +38,7 @@ $ make cleanall buildall
    ビルドしたfirmwareはfirmwareディレクトリにコピーされる
 ```
 $ ls firmware/
-n40a8c-seeeduino_xiao_ble-zmk.uf2  n40a8c-seeeduino_xiao_rp2040-zmk.uf2
+n42a7c-seeeduino_xiao_ble-zmk.uf2  n42a7c-seeeduino_xiao_rp2040-zmk.uf2
 ```
 
 ## コンテナの削除
